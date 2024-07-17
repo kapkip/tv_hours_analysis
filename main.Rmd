@@ -1,0 +1,25 @@
+---
+title: "Codealong"
+author: "Cassandra Pantuso"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+```
+
+
+
+```{r}
+library(tidyverse)
+library(here)
+tv_hours_table <- gss_cat %>% 
+  group_by(marital) %>% 
+  summarize(mean_tv_hours = mean(tvhours, na.rm = T))
+
+write_csv(tv_hours_table, here("TV_Hours_by_Marital_Status.csv"))
+```
+
